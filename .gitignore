@@ -205,3 +205,53 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# =========================
+# Project data (do not track)
+# =========================
+**/data/
+
+# =========================
+# Artifacts and results
+# =========================
+**/artifacts/
+**/results/
+**/reports/figures/
+
+# =========================
+# Model weights and checkpoints
+# =========================
+**/*.pt
+**/*.pth
+**/*.ckpt
+
+# =========================
+# Incomplete downloads
+# =========================
+**/*.crdownload
+
+# =========================
+# Virtual environments
+# =========================
+venv/
+.env/
+.env.*
+
+# =========================
+# Python cache & artifacts
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
