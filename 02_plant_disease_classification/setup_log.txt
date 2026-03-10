@@ -1,0 +1,78 @@
+
+============================================================
+Installing PyTorch with CUDA 12.1
+============================================================
+ERROR: Command 'pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121' timed out after 600 seconds
+
+============================================================
+Installing project dependencies
+============================================================
+
+STDERR: WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x000001FAED9C93C0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /simple/numpy/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x000001FAED9C96C0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /simple/numpy/
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x000001FAED9C9900>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /simple/numpy/
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x000001FAED9C9AB0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /simple/numpy/
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x000001FAED9C9C60>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /simple/numpy/
+ERROR: Could not find a version that satisfies the requirement numpy (from versions: none)
+ERROR: No matching distribution found for numpy
+
+Return code: 1
+
+============================================================
+Verifying PyTorch installation
+============================================================
+
+STDERR: 'grep' is not recognized as an internal or external command,
+operable program or batch file.
+
+Return code: 255
+
+============================================================
+Testing PyTorch and CUDA
+============================================================
+
+STDERR: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'torch'
+
+Return code: 1
+
+============================================================
+Registering Jupyter kernel
+============================================================
+
+STDERR: Traceback (most recent call last):
+  File "C:\Users\Yasindu\.conda\envs\plant_disease_dl\lib\runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "C:\Users\Yasindu\.conda\envs\plant_disease_dl\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\Yasindu\AppData\Roaming\Python\Python310\site-packages\ipykernel\__main__.py", line 6, in <module>
+    app.launch_new_instance()
+  File "C:\Users\Yasindu\AppData\Roaming\Python\Python310\site-packages\traitlets\config\application.py", line 1075, in launch_instance
+    app.start()
+  File "C:\Users\Yasindu\AppData\Roaming\Python\Python310\site-packages\ipykernel\kernelapp.py", line 742, in start
+    return self.subapp.start()
+  File "C:\Users\Yasindu\AppData\Roaming\Python\Python310\site-packages\ipykernel\kernelspec.py", line 274, in start
+    dest = install(
+  File "C:\Users\Yasindu\AppData\Roaming\Python\Python310\site-packages\ipykernel\kernelspec.py", line 190, in install
+    dest = kernel_spec_manager.install_kernel_spec(
+  File "C:\Users\Yasindu\AppData\Roaming\Python\Python310\site-packages\jupyter_client\kernelspec.py", line 406, in install_kernel_spec
+    shutil.copytree(source_dir, destination)
+  File "C:\Users\Yasindu\.conda\envs\plant_disease_dl\lib\shutil.py", line 559, in copytree
+    return _copytree(entries=entries, src=src, dst=dst, symlinks=symlinks,
+  File "C:\Users\Yasindu\.conda\envs\plant_disease_dl\lib\shutil.py", line 457, in _copytree
+    os.makedirs(dst, exist_ok=dirs_exist_ok)
+  File "C:\Users\Yasindu\.conda\envs\plant_disease_dl\lib\os.py", line 225, in makedirs
+    mkdir(name, mode)
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Yasindu\\AppData\\Roaming\\jupyter\\kernels\\plant_disease_dl'
+
+Return code: 1
+
+============================================================
+Listing Jupyter kernels
+============================================================
+
+STDERR: 'jupyter' is not recognized as an internal or external command,
+operable program or batch file.
+
+Return code: 1
