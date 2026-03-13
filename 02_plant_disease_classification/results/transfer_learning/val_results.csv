@@ -1,0 +1,5 @@
+model,val_accuracy,val_macro_f1,checkpoint_path
+resnet50_frozen,0.9346381093057607,0.9214249306962505,
+resnet50_finetuned,0.9969226981782373,0.9953346104081264,C:\Users\Yasindu\Desktop\Stuff\5.ML Projects\deep-learning-projects\02_plant_disease_classification\models\resnet50_best.pth
+efficientnet_b0_frozen,0.8931560807483998,0.8756795551489042,
+efficientnet_b0_finetuned,0.9961841457410143,0.9947553350151027,C:\Users\Yasindu\Desktop\Stuff\5.ML Projects\deep-learning-projects\02_plant_disease_classification\models\efficientnet_b0_best.pth
