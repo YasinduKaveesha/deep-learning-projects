@@ -1,3 +1,0 @@
-model,test_accuracy,test_macro_f1
-resnet50_finetuned,0.9965627301743187,0.9951752139574854
-efficientnet_b0_finetuned,0.9963172109010557,0.994338652985073
