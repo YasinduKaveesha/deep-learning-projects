@@ -1,0 +1,35 @@
+# Core
+torch>=2.0.0
+torchvision>=0.15.0
+
+# YOLOv8
+ultralytics>=8.0.0
+
+# SAHI — Slicing Aided Hyper Inference
+sahi>=0.11.0
+
+# Experiment tracking
+mlflow>=2.0.0
+
+# ONNX export + INT8 inference
+onnx>=1.14.0
+onnxruntime>=1.16.0
+
+# API + demo
+fastapi>=0.100.0
+uvicorn>=0.23.0
+gradio>=4.0.0
+python-multipart>=0.0.6
+
+# Data / viz
+opencv-python>=4.8.0
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+Pillow>=10.0.0
+tqdm>=4.65.0
+
+# Notebooks
+jupyter>=1.0.0
+ipykernel>=6.0.0
