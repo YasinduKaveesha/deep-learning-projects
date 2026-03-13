@@ -9,3 +9,5 @@ __pycache__/
 mlruns/
 *.ipynb_checkpoints/
 .gradio/
+01_aerovision_lk/runs/
+01_aerovision_lk/research/*.pt
