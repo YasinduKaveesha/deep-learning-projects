@@ -1,0 +1,11 @@
+data/
+models/*.pt
+models/*.onnx
+models/*.pth
+__pycache__/
+.env
+*.egg-info/
+.pytest_cache/
+mlruns/
+*.ipynb_checkpoints/
+.gradio/
