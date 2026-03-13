@@ -1,0 +1,16 @@
+# Data
+data/*.zip
+data/images/
+data/labels/
+
+# Model weights
+weights/*.pt
+weights/*.onnx
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Documents
+*.docx
