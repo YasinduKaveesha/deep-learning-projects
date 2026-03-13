@@ -1,0 +1,13 @@
+{
+    "model_name": "BaselineCNN",
+    "img_size": 224,
+    "batch_size": 32,
+    "epochs": 10,
+    "learning_rate": 0.001,
+    "split": "70/15/15 stratified",
+    "augmentation": "RandomResizedCrop + HorizontalFlip + Rotation + ColorJitter",
+    "loss": "CrossEntropyLoss with class weights",
+    "optimizer": "Adam",
+    "scheduler": "ReduceLROnPlateau",
+    "amp": true
+}
