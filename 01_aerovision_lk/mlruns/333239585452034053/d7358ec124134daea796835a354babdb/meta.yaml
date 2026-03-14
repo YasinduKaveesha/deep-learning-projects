@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/Yasindu/Desktop/Stuff/5.ML%20Projects/deep-learning-projects/01_aerovision_lk/mlruns/333239585452034053/d7358ec124134daea796835a354babdb/artifacts
+end_time: 1773424614448
+entry_point_name: ''
+experiment_id: '333239585452034053'
+lifecycle_stage: active
+run_id: d7358ec124134daea796835a354babdb
+run_name: yolov8s-baseline-640
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773424560380
+status: 4
+tags: []
+user_id: Yasindu
