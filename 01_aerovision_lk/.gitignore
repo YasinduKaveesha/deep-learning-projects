@@ -6,6 +6,11 @@ data/labels/
 # Model weights
 weights/*.pt
 weights/*.onnx
+research/*.pt
+
+# Training & experiment runs
+runs/
+mlruns/
 
 # Python
 __pycache__/
