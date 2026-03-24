@@ -1,0 +1,11 @@
+data/
+research/
+reports/
+analysis/
+mlruns/
+runs/
+.git/
+__pycache__/
+*.ipynb
+*.pyc
+.pytest_cache/
