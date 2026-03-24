@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AeroVision LK</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a2e;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --border: #e2e8f0;
+    --muted: #64748b;
+    --code-bg: #f1f5f9;
+    --highlight: #fbbf24;
+    --green: #16a34a;
+    --red: #dc2626;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+  }
+
+  h1 {
+    font-size: 2.4em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    font-size: 1.1em;
+    color: var(--muted);
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 24px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent);
+    color: var(--text);
+  }
+
+  p { margin-bottom: 14px; }
+
+  strong.stat {
+    background: var(--accent-light);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .callout {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    font-weight: 600;
+  }
+
+  .callout-warn {
+    background: #fef3c7;
+    border-left: 4px solid var(--highlight);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.92em;
+  }
+
+  thead th {
+    background: var(--text);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  thead th:first-child { text-align: left; border-radius: 6px 0 0 0; }
+  thead th:last-child { border-radius: 0 6px 0 0; }
+
+  tbody td {
+    padding: 9px 14px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody td:first-child { text-align: left; font-weight: 600; }
+
+  tbody tr:nth-child(even) { background: #f8fafc; }
+  tbody tr:hover { background: var(--accent-light); }
+
+  .best { color: var(--accent); font-weight: 700; }
+  .delta-pos { color: var(--green); font-weight: 600; }
+  .delta-neg { color: var(--red); font-weight: 600; }
+  .delta-big { color: var(--green); font-weight: 700; font-size: 1.05em; }
+
+  figure {
+    text-align: center;
+    margin: 28px 0;
+  }
+
+  figure img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  figure figcaption {
+    font-size: 0.85em;
+    color: var(--muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  code {
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+  }
+
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 18px 22px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 16px 0;
+    font-size: 0.88em;
+    line-height: 1.6;
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+
+  .cmd { color: #7dd3fc; }
+  .comment { color: #94a3b8; }
+
+  ul { margin: 12px 0 12px 24px; }
+  li { margin-bottom: 8px; }
+
+  .tree {
+    background: var(--code-bg);
+    padding: 20px 24px;
+    border-radius: 8px;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.85em;
+    line-height: 1.8;
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  .tree-comment { color: var(--muted); }
+
+  .cv-line {
+    margin-top: 48px;
+    padding: 24px;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #f1f5f9;
+    border-radius: 10px;
+    font-size: 1.0em;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  .cv-line strong { color: #60a5fa; }
+
+  .badges {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .badge-blue { background: #dbeafe; color: #1d4ed8; }
+  .badge-green { background: #dcfce7; color: #15803d; }
+  .badge-purple { background: #f3e8ff; color: #7e22ce; }
+  .badge-orange { background: #ffedd5; color: #c2410c; }
+
+  .endpoint-list { list-style: none; margin-left: 0; }
+  .endpoint-list li { margin-bottom: 6px; }
+  .endpoint-list code { font-weight: 600; }
+
+  @media print {
+    body { padding: 20px; max-width: 100%; }
+    h2 { page-break-after: avoid; }
+    table, figure { page-break-inside: avoid; }
+    pre { white-space: pre-wrap; }
+  }
+</style>
+</head>
+<body>
+
+<h1>AeroVision <span>LK</span></h1>
+<p class="subtitle">Aerial vehicle detection for Sri Lankan urban traffic &mdash; YOLOv8 + SAHI on VisDrone2019-DET with INT8 quantization for edge deployment.</p>
+
+<div class="badges">
+  <span class="badge badge-blue">YOLOv8s</span>
+  <span class="badge badge-green">SAHI</span>
+  <span class="badge badge-purple">ONNX INT8</span>
+  <span class="badge badge-orange">FastAPI + Docker</span>
+</div>
+
+<!-- ───────────────────── THE PROBLEM ───────────────────── -->
+
+<h2>The Problem</h2>
+
+<p>Standard YOLO resizes every input image to 640&times;640 pixels before inference. VisDrone drone frames range from 960&times;540 to 2000&times;1500. After resize, a pedestrian that was 18 px wide becomes a 6 px blob &mdash; below the network's effective feature-extraction threshold.</p>
+
+<div class="callout">78.7% of all 343,205 training annotations are smaller than 50&times;50 pixels. The model never sees them.</div>
+
+<figure>
+  <img src="reports/figures/eda_resize_comparison.png" alt="Full resolution vs 640px resize">
+  <figcaption>Full resolution vs YOLO 640 px input &mdash; small objects vanish after downscaling</figcaption>
+</figure>
+
+<!-- ───────────────────── THE SOLUTION ───────────────────── -->
+
+<h2>The Solution &mdash; SAHI (Slicing Aided Hyper Inference)</h2>
+
+<p>Instead of resizing the whole image, SAHI slices it into overlapping 512&times;512 tiles and runs YOLO on each tile at full resolution. Detections from all tiles are merged using Non-Maximum Suppression. Small objects are never downscaled &mdash; they are always seen at their original pixel size.</p>
+
+<div class="callout">Result: 54.44% mAP@0.5 &mdash; a +10.36 percentage point improvement over the 44.08% baseline.</div>
+
+<!-- ───────────────────── RESULTS TABLE ───────────────────── -->
+
+<h2>Results</h2>
+
+<table>
+  <thead>
+    <tr><th>Variant</th><th>mAP@0.5</th><th>mAP@0.5:0.95</th><th>Latency</th><th>Device</th><th>Model Size</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>YOLOv8s Baseline</td><td>44.08%</td><td>26.09%</td><td>112.7 ms</td><td>GPU</td><td>21.5 MB</td></tr>
+    <tr><td>YOLOv8s + SAHI 512/0.1</td><td class="best">54.44%</td><td class="best">32.98%</td><td>206.1 ms</td><td>GPU</td><td>21.5 MB</td></tr>
+    <tr><td>YOLOv8s INT8 (no SAHI)</td><td>51.58%</td><td>33.42%</td><td>94.7 ms</td><td>CPU</td><td>11.0 MB</td></tr>
+    <tr><td>YOLOv8s + SAHI + INT8</td><td>54.07%</td><td>32.76%</td><td>858.4 ms</td><td>CPU</td><td class="best">11.0 MB</td></tr>
+  </tbody>
+</table>
+
+<p>INT8 dynamic quantization achieves a <strong>3.9&times; model size reduction</strong> (21.5 MB &rarr; 11.0 MB) while preserving 99.3% of SAHI mAP.</p>
+
+<!-- ───────────────────── GRID SEARCH ───────────────────── -->
+
+<h2>SAHI Grid Search</h2>
+
+<p>9 configurations tested: slice size {320, 512, 640} &times; overlap ratio {0.1, 0.2, 0.3}.</p>
+
+<p>Best configuration: <strong>slice 512, overlap 0.1</strong> &mdash; highest mAP@0.5 (54.44%) at the lowest latency among 512-tile configs (206.1 ms/img).</p>
+
+<figure>
+  <img src="reports/figures/sahi_grid_heatmap.png" alt="SAHI grid search heatmap" style="max-width: 65%;">
+  <figcaption>SAHI grid search heatmap &mdash; 512/0.1 is optimal</figcaption>
+</figure>
+
+<!-- ───────────────────── PER-CLASS ───────────────────── -->
+
+<h2>Per-Class Improvement</h2>
+
+<p>AP@0.5 on VisDrone2019-DET val (548 images). Baseline &rarr; SAHI best config (512/0.1).</p>
+
+<table>
+  <thead>
+    <tr><th>Class</th><th>Baseline</th><th>SAHI</th><th>Delta</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>pedestrian</td><td>44.5%</td><td>62.0%</td><td class="delta-big">+17.5pp</td></tr>
+    <tr><td>people</td><td>35.2%</td><td>48.7%</td><td class="delta-pos">+13.4pp</td></tr>
+    <tr><td>bicycle</td><td>13.2%</td><td>23.3%</td><td class="delta-pos">+10.1pp</td></tr>
+    <tr><td>car</td><td>80.3%</td><td>85.1%</td><td class="delta-pos">+4.8pp</td></tr>
+    <tr><td>van</td><td>44.5%</td><td>53.2%</td><td class="delta-pos">+8.7pp</td></tr>
+    <tr><td>truck</td><td>37.5%</td><td>42.5%</td><td class="delta-pos">+4.9pp</td></tr>
+    <tr><td>three_wheeler</td><td>36.8%</td><td>47.8%</td><td class="delta-pos">+11.0pp</td></tr>
+    <tr><td>bus</td><td>59.5%</td><td>69.7%</td><td class="delta-pos">+10.3pp</td></tr>
+    <tr><td>motor</td><td>45.2%</td><td>57.6%</td><td class="delta-pos">+12.4pp</td></tr>
+  </tbody>
+</table>
+
+<p>Every class improves. The largest gains are on the smallest object classes (pedestrian, people, motor).</p>
+
+<figure>
+  <img src="reports/figures/sahi_per_class_comparison.png" alt="Per-class AP comparison">
+  <figcaption>Per-class AP@0.5 comparison &mdash; baseline vs SAHI</figcaption>
+</figure>
+
+<!-- ───────────────────── SMALL OBJECT RECALL ───────────────────── -->
+
+<h2>Small Object Recall</h2>
+
+<p>Recall by ground-truth bounding box size bucket:</p>
+
+<table>
+  <thead>
+    <tr><th>Size Bucket</th><th>Ground Truths</th><th>Baseline Recall</th><th>SAHI Recall</th><th>Delta</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>&lt; 32 px</td><td>26,586</td><td>43.3%</td><td>66.7%</td><td class="delta-big">+23.5pp</td></tr>
+    <tr><td>32&ndash;64 px</td><td>8,995</td><td>81.9%</td><td>88.1%</td><td class="delta-pos">+6.2pp</td></tr>
+    <tr><td>64&ndash;128 px</td><td>2,849</td><td>95.0%</td><td>95.7%</td><td class="delta-pos">+0.7pp</td></tr>
+    <tr><td>&gt; 128 px</td><td>329</td><td>94.8%</td><td>94.5%</td><td class="delta-neg">&minus;0.3pp</td></tr>
+  </tbody>
+</table>
+
+<p>SAHI's gains are concentrated exactly where standard YOLO fails &mdash; objects under 32 pixels, which make up 68% of all ground truths.</p>
+
+<figure>
+  <img src="reports/figures/sahi_small_object_recall.png" alt="Small object recall by size bucket" style="max-width: 70%;">
+  <figcaption>Small object recall by size bucket</figcaption>
+</figure>
+
+<!-- ───────────────────── TUK-TUK ───────────────────── -->
+
+<h2>Three-Wheeler Detection &mdash; Sri Lanka Context</h2>
+
+<p>VisDrone's "tricycle" class maps directly to Sri Lankan three-wheelers (tuk-tuks). This is not data manipulation &mdash; it is intelligent localization of a global benchmark to a local deployment context.</p>
+
+<p>Three-wheelers are the dominant mode of urban transport in Sri Lanka. Detecting them reliably from aerial footage is a prerequisite for any drone-based traffic monitoring system deployed locally.</p>
+
+<ul>
+  <li><strong>Baseline AP@0.5:</strong> 36.8%</li>
+  <li><strong>SAHI AP@0.5:</strong> 47.8% (+11.0pp)</li>
+  <li><strong>Training samples:</strong> 8,058 (2.35% of dataset &mdash; a rare class)</li>
+</ul>
+
+<!-- ───────────────────── HOW TO RUN ───────────────────── -->
+
+<h2>How to Run</h2>
+
+<p><strong>Local API server:</strong></p>
+<pre><code><span class="cmd">pip install</span> -r requirements.txt
+<span class="cmd">uvicorn</span> app.main:app --port 8000</code></pre>
+
+<p>Endpoints:</p>
+<ul class="endpoint-list">
+  <li><code>GET /health</code> &mdash; model status</li>
+  <li><code>GET /classes</code> &mdash; list of 9 detection classes</li>
+  <li><code>POST /predict</code> &mdash; upload an image, get detections</li>
+</ul>
+
+<p><strong>Docker:</strong></p>
+<pre><code><span class="cmd">docker build</span> -t aerovision-lk .
+<span class="cmd">docker run</span> -p 8000:8000 aerovision-lk</code></pre>
+
+<p><strong>Gradio demo:</strong></p>
+<pre><code><span class="cmd">python</span> app/gradio_demo.py
+<span class="comment"># Opens at http://127.0.0.1:7860</span></code></pre>
+
+<p>Side-by-side comparison of SAHI vs standard YOLO inference with bounding box visualization.</p>
+
+<!-- ───────────────────── FAILURE ANALYSIS ───────────────────── -->
+
+<h2>Failure Analysis</h2>
+
+<div class="callout-warn">
+<p>The model still struggles in specific areas:</p>
+</div>
+
+<ul>
+  <li><strong>Bicycle</strong> remains the weakest class at 23.3% AP@0.5 even after SAHI. Only 10,480 training samples (3.05% of dataset) &mdash; a class imbalance problem, not an inference problem.</li>
+  <li><strong>People vs pedestrian confusion</strong> &mdash; these two classes overlap semantically (people sitting vs standing/walking), causing cross-class false positives. People AP tops out at 48.7%.</li>
+  <li><strong>Extreme density scenes</strong> (300+ objects per frame) still produce missed detections near tile boundaries, even with 10% overlap.</li>
+  <li><strong>Night and low-contrast conditions</strong> &mdash; VisDrone includes dusk/dawn scenes where small dark vehicles blend into shadows.</li>
+</ul>
+
+<figure>
+  <img src="reports/figures/baseline_failures.png" alt="Failure cases">
+  <figcaption>Failure cases &mdash; dense scenes and small objects the model misses</figcaption>
+</figure>
+
+<!-- ───────────────────── PROJECT STRUCTURE ───────────────────── -->
+
+<h2>Project Structure</h2>
+
+<div class="tree">aerovision_lk/
+├── app/
+│   ├── main.py                 <span class="tree-comment"># FastAPI inference server</span>
+│   ├── model.py                <span class="tree-comment"># SAHI + ONNX INT8 model manager</span>
+│   ├── schemas.py              <span class="tree-comment"># Pydantic response models</span>
+│   ├── gradio_demo.py          <span class="tree-comment"># HuggingFace Spaces demo</span>
+│   └── examples/               <span class="tree-comment"># Sample VisDrone val images</span>
+├── research/
+│   ├── 01_eda.ipynb            <span class="tree-comment"># Exploratory data analysis</span>
+│   ├── 02_baseline_yolov8.ipynb <span class="tree-comment"># YOLOv8s training + evaluation</span>
+│   ├── 03_sahi_inference.ipynb  <span class="tree-comment"># SAHI integration + recall analysis</span>
+│   ├── 04_sahi_experiments.ipynb <span class="tree-comment"># Grid search over SAHI configs</span>
+│   └── 05_quantization.ipynb    <span class="tree-comment"># ONNX export + INT8 quantization</span>
+├── analysis/                    <span class="tree-comment"># Metrics CSVs (all experiments logged)</span>
+├── reports/figures/             <span class="tree-comment"># All plots and visualizations</span>
+├── tests/                       <span class="tree-comment"># API unit tests (pytest)</span>
+├── weights/                     <span class="tree-comment"># Model weights (not tracked in git)</span>
+├── Dockerfile                   <span class="tree-comment"># CPU-optimized container</span>
+├── .github/workflows/ci.yml    <span class="tree-comment"># Lint (ruff) + test on push</span>
+├── requirements.txt
+├── requirements-docker.txt      <span class="tree-comment"># CPU-only PyTorch for Docker</span>
+└── requirements_spaces.txt      <span class="tree-comment"># HuggingFace Spaces dependencies</span></div>
+
+<!-- ───────────────────── CV LINE ───────────────────── -->
+
+<div class="cv-line">
+  <strong>AeroVision LK</strong> &mdash; Built YOLOv8 + SAHI aerial detection pipeline achieving 54.4% mAP@0.5 (+10.4pp over baseline) on VisDrone2019-DET, with INT8 quantization (3.9&times; size reduction) and FastAPI/Docker deployment.
+</div>
+
+</body>
+</html>
