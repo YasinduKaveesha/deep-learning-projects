@@ -1,0 +1,8 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+ultralytics
+sahi
+gradio
+onnxruntime
+opencv-python-headless
+numpy
