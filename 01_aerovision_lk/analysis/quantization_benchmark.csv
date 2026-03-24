@@ -1,0 +1,5 @@
+variant,mAP50,mAP50_95,latency_ms,device,model_size_mb,strategy
+YOLOv8s Baseline,0.4408,0.2609,112.7,GPU,21.5,Standard 640px resize
+YOLOv8s + SAHI 512/0.1,0.5444,0.3298,206.1,GPU,21.5,"Sliced inference (512px tiles, 10% overlap)"
+YOLOv8s INT8 (no SAHI),0.5158,0.3342,94.7,CPU,11.0,ONNX INT8 dynamic quantization
+YOLOv8s + SAHI + INT8,0.5407,0.3276,858.4,CPU,11.0,SAHI 512/0.1 + ONNX INT8
