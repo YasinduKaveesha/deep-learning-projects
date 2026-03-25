@@ -1,6 +1,11 @@
+[![CI](https://github.com/YasinduKaveesha/deep-learning-projects/actions/workflows/ci.yml/badge.svg)](https://github.com/YasinduKaveesha/deep-learning-projects/actions/workflows/ci.yml)
+[![Gradio Demo](https://img.shields.io/badge/Demo-HuggingFace%20Spaces-orange)](https://huggingface.co/spaces/mykkularathne/aerovision-lk)
+
 # AeroVision LK
 
 Aerial vehicle detection for Sri Lankan urban traffic — YOLOv8 + SAHI on VisDrone2019-DET with INT8 quantization for edge deployment.
+
+**[Live Demo](https://huggingface.co/spaces/mykkularathne/aerovision-lk)**
 
 ---
 

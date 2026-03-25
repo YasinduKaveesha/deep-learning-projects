@@ -11,6 +11,7 @@ research/*.pt
 # Training & experiment runs
 runs/
 mlruns/
+research/runs/
 
 # Python
 __pycache__/
@@ -19,3 +20,7 @@ __pycache__/
 
 # Documents
 *.docx
+
+# Generated docs
+*.html
+PROJECT_DOCUMENTATION.txt

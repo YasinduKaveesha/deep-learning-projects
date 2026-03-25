@@ -1,0 +1,53 @@
+======================================================================
+AEROVISION LK - SAHI FAILURE ANALYSIS
+5 cases where SAHI inference still fails
+======================================================================
+
+--- Failure Case 1: Density ---
+Image: 0000295_01800_d_0000030.jpg
+GT objects: 306
+SAHI detected: 264
+Missed: 126 (41%)
+
+With 306 ground-truth objects, this is one of the densest scenes in the validation set; SAHI missed 126 (41%). Objects near 512px tile boundaries are split across tiles and suppressed by NMS during the merge step -- increasing overlap beyond 10% would recover some but adds latency.
+
+
+--- Failure Case 2: Bicycle ---
+Image: 0000295_01800_d_0000030.jpg
+GT objects: 306
+SAHI detected: 264
+Missed: 126 (41%)
+
+This image contains 30 bicycle annotations but SAHI detected only 4 -- missing 26. Bicycles have the fewest training samples (3.05% of dataset) and 67.8% are under 32px, making them the hardest class even with tiled inference; data augmentation or class-weighted loss could help.
+
+
+--- Failure Case 3: Low Contrast ---
+Image: 0000276_05601_d_0000535.jpg
+GT objects: 10
+SAHI detected: 14
+Missed: 5 (50%)
+
+The average prediction confidence is only 0.41 across 14 detections, indicating the model is uncertain about most objects. Low-contrast conditions (dusk, shadows, overexposure) reduce feature discriminability and push confidence below the 0.25 threshold -- histogram equalization or contrast-adaptive preprocessing could mitigate this.
+
+
+--- Failure Case 4: Truck Van ---
+Image: 0000244_04900_d_0000011.jpg
+GT objects: 106
+SAHI detected: 130
+Missed: 12 (11%)
+
+SAHI confused truck and van classes 3 times in this image. From an aerial perspective, trucks and vans share similar rectangular silhouettes and are primarily distinguished by physical size -- the model lacks reliable scale cues at altitude, so a size-aware post-processing step or explicit aspect-ratio features could reduce these swaps.
+
+
+--- Failure Case 5: People Pedestrian ---
+Image: 0000295_02400_d_0000033.jpg
+GT objects: 317
+SAHI detected: 384
+Missed: 88 (28%)
+
+SAHI swapped people and pedestrian labels 21 times here. These two classes overlap semantically (standing vs sitting/grouped humans) and 96.8% of 'people' annotations are under 50px -- at this scale the visual difference is negligible, so merging the two classes or using a pose-aware head would be more practical for deployment.
+
+
+======================================================================
+Green boxes = Ground truth  |  Red boxes = SAHI predictions
+======================================================================
