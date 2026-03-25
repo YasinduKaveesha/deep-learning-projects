@@ -1,0 +1,37 @@
+# raw dataset — 54K images, never needed in the image
+data/raw/
+
+# research artefacts — not needed at inference time
+notebooks/
+results/
+reports/
+examples/
+scripts/
+
+# HuggingFace Spaces entry point — not part of the API
+app.py
+requirements_spaces.txt
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+*.ipynb
+
+# git / editor artefacts
+.git/
+.gitignore
+*.md
+
+# other model weights (only resnet50_best.pth is copied explicitly)
+models/baseline_cnn_best.pth
+models/baseline_cnn_config.json
+models/efficientnet_b0_best.pth
+models/label_encoder.pkl
+
+# venv / OS artefacts
+venv/
+.env
+.DS_Store
+Thumbs.db
