@@ -183,7 +183,6 @@ def plot_heatmap_grid(
         fig.savefig(save_path, bbox_inches="tight")
         print(f"Saved: {Path(save_path).resolve()}")
 
-    plt.show()
     plt.close(fig)
 
 
