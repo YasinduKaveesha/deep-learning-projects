@@ -1,11 +1,11 @@
 [![CI](https://github.com/YasinduKaveesha/deep-learning-projects/actions/workflows/ci.yml/badge.svg)](https://github.com/YasinduKaveesha/deep-learning-projects/actions/workflows/ci.yml)
-[![Gradio Demo](https://img.shields.io/badge/Demo-HuggingFace%20Spaces-orange)](https://huggingface.co/spaces/mykkularathne/aerovision-lk)
+[![Demo](https://img.shields.io/badge/%F0%9F%A4%97-Live%20Demo-orange)](https://huggingface.co/spaces/mykkularathne/aerovision-lk)
 
 # AeroVision LK
 
 Aerial vehicle detection for Sri Lankan urban traffic — YOLOv8 + SAHI on VisDrone2019-DET with INT8 quantization for edge deployment.
 
-**[Live Demo](https://huggingface.co/spaces/mykkularathne/aerovision-lk)**
+**[Try the live demo on HuggingFace Spaces](https://huggingface.co/spaces/mykkularathne/aerovision-lk)**
 
 ---
 
@@ -154,6 +154,10 @@ aerovision_lk/
 │   ├── 03_sahi_inference.ipynb  # SAHI integration + recall analysis
 │   ├── 04_sahi_experiments.ipynb # Grid search over SAHI configs
 │   └── 05_quantization.ipynb    # ONNX export + INT8 quantization
+├── spaces/                      # HuggingFace Spaces deployment
+│   ├── app.py                  # Self-contained Gradio demo
+│   ├── yolov8s_int8.onnx       # INT8 quantized model (11 MB)
+│   └── examples/               # Sample images
 ├── analysis/                    # Metrics CSVs (all experiments logged)
 ├── reports/figures/             # All plots and visualizations
 ├── tests/                       # API unit tests (pytest)
@@ -167,4 +171,22 @@ aerovision_lk/
 
 ---
 
-**AeroVision LK** — Built YOLOv8 + SAHI aerial detection pipeline achieving 54.4% mAP@0.5 (+10.4pp over baseline) on VisDrone2019-DET, with INT8 quantization (3.9x size reduction) and FastAPI/Docker deployment.
+## Tech Stack
+
+| Category | Tools |
+|----------|-------|
+| Detection | YOLOv8s (Ultralytics) |
+| Tiled Inference | SAHI |
+| Quantization | ONNX Runtime (INT8 dynamic) |
+| API | FastAPI + Uvicorn |
+| Demo | Gradio (HuggingFace Spaces) |
+| Container | Docker |
+| CI | GitHub Actions |
+| Linting | ruff |
+| Testing | pytest |
+
+---
+
+## CV Line
+
+> **AeroVision LK** — Built a YOLOv8 + SAHI aerial vehicle detection pipeline achieving 54.4% mAP@0.5 (+10.4pp over baseline) on VisDrone2019-DET with 9 SAHI configurations grid-searched; applied INT8 dynamic quantization for 3.9x model size reduction; deployed as FastAPI + Gradio on HuggingFace Spaces with Docker support.

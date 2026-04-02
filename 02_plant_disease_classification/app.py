@@ -22,7 +22,7 @@ from PIL import Image
 
 # ── configuration ──────────────────────────────────────────────────────────
 # ↓ Replace with your actual HuggingFace username before deploying
-HF_REPO        = "YOUR_HF_USERNAME/plant-disease-resnet50"
+HF_REPO        = "mykkularathne/plant-disease-resnet50"
 HF_FILENAME    = "resnet50_best.pth"
 NUM_CLASSES    = 38
 

@@ -1,10 +1,11 @@
-# Autoencoder Anomaly Detection
+[![CI](https://github.com/YasinduKaveesha/deep-learning-projects/actions/workflows/ci.yml/badge.svg)](https://github.com/YasinduKaveesha/deep-learning-projects/actions/workflows/ci.yml)
+[![Demo](https://img.shields.io/badge/%F0%9F%A4%97-Live%20Demo-orange)](https://huggingface.co/spaces/mykkularathne/autoencoder-anomaly-detection)
 
-[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/mykkularathne/autoencoder-anomaly-detection)
+# Autoencoder Anomaly Detection
 
 Unsupervised industrial surface defect detection using a convolutional autoencoder trained on the MVTec AD hazelnut dataset. The model learns to reconstruct defect-free images only — anomalies are flagged when reconstruction error exceeds a calibrated threshold.
 
-**[Try the live demo on Hugging Face Spaces](https://huggingface.co/spaces/mykkularathne/autoencoder-anomaly-detection)**
+**[Try the live demo on HuggingFace Spaces](https://huggingface.co/spaces/mykkularathne/autoencoder-anomaly-detection)**
 
 ![Training Curves](reports/figures/training_curves.png)
 
@@ -125,6 +126,10 @@ Precision is near-perfect (97%+), meaning when the model flags an anomaly, it is
 ├── reports/
 │   ├── eval_metrics.csv                # Threshold comparison table
 │   └── figures/                        # 11 generated plots
+├── spaces/
+│   ├── app.py                          # Self-contained Gradio demo
+│   ├── best_autoencoder.pt             # Model checkpoint for Spaces
+│   └── examples/                       # Sample images
 ├── data/mvtec/hazelnut/                # MVTec AD dataset (not committed)
 ├── .github/workflows/ci.yml           # ruff + pytest on push
 ├── Dockerfile                          # CPU-only Python 3.11-slim
