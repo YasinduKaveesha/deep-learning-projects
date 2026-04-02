@@ -223,8 +223,3 @@ CPU-only image (~1.5 GB). Only `app/` and `models/` are copied — no training c
 | CV | OpenCV (heatmaps) |
 | Data | scikit-learn, scikit-image |
 
----
-
-## CV Line
-
-> **Autoencoder Anomaly Detection** — Built an unsupervised industrial defect detector using a convolutional autoencoder (778K params) trained on MVTec AD hazelnut; achieved PR-AUC 0.93 and F1 0.65 via p95 threshold calibration on validation reconstruction errors; deployed as a FastAPI service containerized with Docker and demoed on Gradio.

@@ -185,8 +185,3 @@ aerovision_lk/
 | Linting | ruff |
 | Testing | pytest |
 
----
-
-## CV Line
-
-> **AeroVision LK** — Built a YOLOv8 + SAHI aerial vehicle detection pipeline achieving 54.4% mAP@0.5 (+10.4pp over baseline) on VisDrone2019-DET with 9 SAHI configurations grid-searched; applied INT8 dynamic quantization for 3.9x model size reduction; deployed as FastAPI + Gradio on HuggingFace Spaces with Docker support.

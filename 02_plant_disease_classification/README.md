@@ -177,8 +177,3 @@ Expected runtime on RTX 3050 6GB: ~5-7 hours total (ResNet50: ~3-4 hrs, Efficien
 | Linting | ruff |
 | Hardware | NVIDIA RTX 3050 6GB, mixed precision (AMP) |
 
----
-
-## CV Line
-
-> **Plant Disease Classification** — Built a 38-class plant disease classifier using two-stage transfer learning (ResNet50) on PlantVillage, achieving 99.66% test accuracy and 0.9952 macro-F1; validated with Grad-CAM explainability analysis confirming lesion-focused attention; deployed as a FastAPI service with Docker and Gradio demo on HuggingFace Spaces.
